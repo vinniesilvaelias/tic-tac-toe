@@ -77,10 +77,10 @@ void MainWindow::on_btnNewGame_clicked()
 void MainWindow::setUp()
 {
     player1 = new Player(dataPlayers->getNamePlayerOne(),
-                         dataPlayers->getSymbPlayerOne());
+    dataPlayers->getSymbPlayerOne());
 
     player2 = new Player(dataPlayers->getNamePlayerTwo(),
-                         dataPlayers->getSymbPlayerTwo());
+    dataPlayers->getSymbPlayerTwo());
 
     game = new Game(*(player1),*(player2));
 
@@ -134,7 +134,7 @@ void MainWindow::resetWindow()
     setBtnEnable(true);
     setCurrentPlayer();
     ui->lblCurrentPlayer->setText("Current Player: "
-                         + currentPlayer->getName());
+    + currentPlayer->getName());
 }
 
 void MainWindow::resetBtn()
@@ -142,7 +142,8 @@ void MainWindow::resetBtn()
     for (int i=0; i < game->getBoardSize();++i) {
         btn[i]->setText("");
         btn[i]->setChecked(false);
-        btn[i]->setStyleSheet("background-color: rgb(82, 173, 151);");
+        btn[i]->setStyleSheet(
+        "background-color: rgb(82, 173, 151);");
     }
 }
 
@@ -151,13 +152,14 @@ void MainWindow::setMove(QPushButton* currentBtn,int pos)
     if (game->validPosition(pos)) {
         setCurrentPlayer();
 
-        ui->lblCurrentPlayer->setText("Current Player: "
-                                     + currentPlayer->getName());
+        ui->lblCurrentPlayer->setText(
+        "Current Player: " + currentPlayer->getName());
 
-        currentBtn->setStyleSheet("background-color: rgb(247, 210, 80);");
+        currentBtn->setStyleSheet(
+        "background-color: rgb(247, 210, 80);");
 
-        ui->lblCurrentPlayer->setText("Current Player: "
-                                     + currentPlayer->getName());
+        ui->lblCurrentPlayer->setText(
+        "Current Player: " + currentPlayer->getName());
 
         game->play(currentPlayer,pos);
 
@@ -182,13 +184,14 @@ void MainWindow::changeBtnColor()
 {
     if (game->isTie()) {
         for (int i=0; i<game->getBoardSize(); ++i) {
-            btn[i]->setStyleSheet("background-color: rgb(105,82,173);");
+            btn[i]->setStyleSheet(
+            "background-color: rgb(105,82,173);");
         }
     }
     else {
          for (int i=0; i<3; ++i) {
              btn[game->getGoodSequence()[i]]->setStyleSheet(
-                       "background-color: rgb(173,82,104);");
+             "background-color: rgb(173,82,104);");
          }
     }
 }
@@ -215,7 +218,8 @@ void MainWindow::closeEvent(QCloseEvent *e)
 
     msgBox.setText("Do you want to exit the game?");
 
-    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+    msgBox.setStandardButtons(
+    QMessageBox::Yes | QMessageBox::Cancel);
 
     switch (msgBox.exec()) {
     case QMessageBox::Yes:    e->accept(); break;

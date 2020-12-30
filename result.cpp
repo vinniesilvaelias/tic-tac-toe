@@ -16,9 +16,9 @@ Result::~Result()
 void Result::setResult(bool tie, const QString & result)
 {
     QString qstr = tie ? "tie" : "win";
+  
     QMovie* movie = new QMovie("../tic-tac-toe/resources/"+
-                               qstr + QString::number(rand() % 2) +
-                               ".gif");
+    qstr + QString::number(rand() % 2) + ".gif");
 
     ui->lblGif->setMovie(movie);
     movie->start();
